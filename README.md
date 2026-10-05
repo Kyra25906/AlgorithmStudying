@@ -19,7 +19,11 @@
 - [第三课练习参考答案](stl/solutions/03-string.md)
 - [第二、三课自动检查脚本](stl/tests/check_lessons_02_03.py)
 
-目前已完成规划和前三课，其余课程尚未撰写。主线为 C++17，C++20 扩展单独标注。
+- [第四课 用引用和记录类型准确表达数据](stl/lessons/04-references-records.md)
+- [第四课练习参考答案](stl/solutions/04-records.md)
+- [第四课自动检查](stl/tests/check_lesson_04.py)
+
+目前已完成规划和前四课，其余课程尚未撰写。主线为 C++17，C++20 扩展单独标注。
 
 ## 运行示例
 
@@ -55,3 +59,18 @@ python stl/tests/check_lessons_02_03.py
 含中文的管道输入受 PowerShell 编码设置影响；自动检查脚本以 UTF-8 字节送入进程。
 
 状态演示的 capacity 数值依赖实现，不要求每台机器一致。编译产物保存在 build，不进入版本管理。练习先独立完成，再阅读答案。
+
+
+第四课运行：
+
+```powershell
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/04-reference-auto.cpp -o build/04-reference-auto.exe
+./build/04-reference-auto.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/04-record-types.cpp -o build/04-record-types.exe
+./build/04-record-types.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/04-student-records.cpp -o build/04-student-records.exe
+"3`n5`nAlice 98`nBob 55`nCarol 20" | ./build/04-student-records.exe
+python stl/tests/check_lesson_04.py
+```
+
+最后的检查包含预期编译失败用例；脚本只在失败符合预期时判定通过。不会实际执行悬空引用或越界访问。
