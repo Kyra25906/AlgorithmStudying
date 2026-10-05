@@ -2,10 +2,11 @@
 #include <vector>
 
 // 读入 n 与 n 个整数，再读入目标值 x，删除所有等于 x 的元素。
+// 演示会执行最坏 O(n^2) 的逐次删除，因此限制 n <= 5000。
 // 两种写法对照：写法一利用 erase 返回值，写法三筛选到新容器。
 int main() {
     int n;
-    if (!(std::cin >> n) || n < 0 || n > 100000) {
+    if (!(std::cin >> n) || n < 0 || n > 5000) {
         std::cerr << "invalid count\n";
         return 1;
     }

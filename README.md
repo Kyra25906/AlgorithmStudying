@@ -15,7 +15,11 @@
 - [第二课矩阵程序](stl/examples/02-matrix.cpp)
 - [第二课练习参考答案](stl/solutions/02-vector.md)
 
-目前已完成规划和前两课，其余课程尚未撰写。主线为 C++17，C++20 扩展单独标注。
+- [第三课 string 的输入、查找、截取、替换与编码边界](stl/lessons/03-string-parsing.md)
+- [第三课练习参考答案](stl/solutions/03-string.md)
+- [第二、三课自动检查脚本](stl/tests/check_lessons_02_03.py)
+
+目前已完成规划和前三课，其余课程尚未撰写。主线为 C++17，C++20 扩展单独标注。
 
 ## 运行示例
 
@@ -34,5 +38,20 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/02-safe-erase.cpp -o build/
 g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/02-matrix.cpp -o build/02-matrix.exe
 "2 3`n1 2 3`n4 5 6" | ./build/02-matrix.exe
 ```
+
+第三课运行：
+
+```powershell
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/03-string-ops.cpp -o build/03-string-ops.exe
+./build/03-string-ops.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/03-line-input.cpp -o build/03-line-input.exe
+"3`nAlice Smith`n`n  Bob" | ./build/03-line-input.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/03-text-parser.cpp -o build/03-text-parser.exe
+"name=Alice Smith`nempty=" | ./build/03-text-parser.exe
+# 可选：Python 3 自动编译并检查两课全部示例及第三课答案程序
+python stl/tests/check_lessons_02_03.py
+```
+
+含中文的管道输入受 PowerShell 编码设置影响；自动检查脚本以 UTF-8 字节送入进程。
 
 状态演示的 capacity 数值依赖实现，不要求每台机器一致。编译产物保存在 build，不进入版本管理。练习先独立完成，再阅读答案。

@@ -22,7 +22,7 @@ int main() {
     assert((b == std::vector<int>{1, 2, 3}));
     show("copy", b);
 
-    // 2. 移动：源对象进入“有效但未指定”状态，不能再读内容
+    // 2. 移动：源对象进入“有效但未指定”状态，可检查 size/empty，但不假设元素内容
     std::vector<int> c = std::move(b);         // b 被搬走
     assert((c == std::vector<int>{1, 2, 3}));
     b = std::vector<int>{5, 6};                // 重新赋值是安全的
@@ -40,9 +40,11 @@ int main() {
     assert((d == std::vector<int>{9, 8}));
     show("assign", d);
 
-    // 4. swap：内容交换，引用与迭代器不失效
+    // 4. swap：元素引用和迭代器有效，旧 end() 需重新获取
     std::vector<int> x{1}, y{2, 3};
+    auto oldElement = x.begin();
     x.swap(y);
+    assert(*oldElement == 1 && oldElement == y.begin());
     assert((x == std::vector<int>{2, 3}) && (y == std::vector<int>{1}));
     show("swap", x);
 
@@ -80,14 +82,24 @@ int main() {
         }
     assert(m[1][2] == flat[1 * cols + 2]);
 
-    // 8. 复制交换缩容：capacity 不再大于 size
+    // 8. 复制交换：保证内容，不能要求 capacity 恰好等于 size
     std::vector<int> g;
     g.reserve(100);
     g.push_back(1);
     const auto before = g.capacity();
     assert(before >= 100);
-    std::vector<int>(g).swap(g);   // 临时容器恰好大小，再交换
-    assert(g.size() == 1 && g.capacity() == 1);
+    std::vector<int>(g).swap(g);   // 容量由实现决定，再交换
+    assert((g == std::vector<int>{1}));
+    assert(g.capacity() >= g.size());
+    show("copy-swap", g);
+
+    std::vector<int> empty;
+    assert(empty.erase(empty.end(), empty.end()) == empty.end());
+    auto inserted = empty.insert(empty.end(), 42);
+    assert(*inserted == 42);
+    const auto afterErase = empty.erase(empty.begin());
+    assert(afterErase == empty.end());
+    assert(empty.empty());
 
     std::cout << "all checks passed\n";
 }
