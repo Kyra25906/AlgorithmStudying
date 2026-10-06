@@ -23,7 +23,11 @@
 - [第四课练习参考答案](stl/solutions/04-records.md)
 - [第四课自动检查](stl/tests/check_lesson_04.py)
 
-目前已完成规划和前四课，其余课程尚未撰写。主线为 C++17，C++20 扩展单独标注。
+- [第五课 迭代器与半开区间](stl/lessons/05-iterators-ranges.md)
+- [第五课练习参考答案](stl/solutions/05-iterators.md)
+- [第五课自动检查](stl/tests/check_lesson_05.py)
+
+目前已完成规划和前五课，其余课程尚未撰写。主线为 C++17，C++20 扩展单独标注。
 
 ## 运行示例
 
@@ -74,3 +78,18 @@ python stl/tests/check_lesson_04.py
 ```
 
 最后的检查包含预期编译失败用例；脚本只在失败符合预期时判定通过。不会实际执行悬空引用或越界访问。
+
+
+第五课运行：
+
+```powershell
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/05-iterator-basics.cpp -o build/05-iterator-basics.exe
+./build/05-iterator-basics.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/05-iterator-adapters.cpp -o build/05-iterator-adapters.exe
+./build/05-iterator-adapters.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/05-range-copy.cpp -o build/05-range-copy.exe
+"5 1 4`n10 20 30 40 50" | ./build/05-range-copy.exe
+python stl/tests/check_lesson_05.py
+```
+
+区间按下标 [l,r) 解释，允许 l=r 和 r=n；先验证边界，再形成迭代器。自动检查还会编译练习中的反向复制片段并验证其边界。
