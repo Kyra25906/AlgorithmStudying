@@ -61,7 +61,7 @@ assert result.returncode==0 and not result.stderr,result.stderr.decode(errors='r
 programs['exercise-7']=target
 run('exercise-7','','')
 for file in [ROOT/'README.md',*(ROOT/'stl').rglob('*.md')]:
-    for link in re.findall(r'\]\(([^)]+)\)',file.read_text(encoding='utf-8-sig')):
+    for link in re.findall(r'\]\(([^)]+)\)',re.sub(r'```[\s\S]*?```|`[^`\n]*`', '', file.read_text(encoding='utf-8-sig'))):
         if '://' not in link and not link.startswith('#'):
             assert (file.parent/link.split('#',1)[0]).exists(),(file,link)
 print(f'PASS: {len(programs)} compiled programs; {checks} checks (including {len(invalid)} expected compilation failures); local links exist')

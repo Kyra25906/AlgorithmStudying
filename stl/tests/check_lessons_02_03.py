@@ -101,7 +101,7 @@ for index,block in enumerate(blocks,1):
 
 # Check repository-local Markdown links in the learning materials.
 for file in [ROOT/'README.md', *(ROOT/'stl').rglob('*.md')]:
-    for link in re.findall(r'\]\(([^)]+)\)',file.read_text(encoding='utf-8-sig')):
+    for link in re.findall(r'\]\(([^)]+)\)',re.sub(r'```[\s\S]*?```|`[^`\n]*`', '', file.read_text(encoding='utf-8-sig'))):
         if '://' in link or link.startswith('#'):
             continue
         assert (file.parent/link.split('#',1)[0]).exists(), (file,link)

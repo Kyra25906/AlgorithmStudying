@@ -27,7 +27,11 @@
 - [第五课练习参考答案](stl/solutions/05-iterators.md)
 - [第五课自动检查](stl/tests/check_lesson_05.py)
 
-目前已完成规划和前五课，其余课程尚未撰写。主线为 C++17，C++20 扩展单独标注。
+- [第六课 lambda 谓词与自定义排序](stl/lessons/06-lambda-comparators.md)
+- [第六课练习参考答案](stl/solutions/06-lambda-sort.md)
+- [第六课自动检查](stl/tests/check_lesson_06.py)
+
+目前已完成规划和前六课，其余课程尚未撰写。主线为 C++17，C++20 扩展单独标注。
 
 ## 运行示例
 
@@ -93,3 +97,18 @@ python stl/tests/check_lesson_05.py
 ```
 
 区间按下标 [l,r) 解释，允许 l=r 和 r=n；先验证边界，再形成迭代器。自动检查还会编译练习中的反向复制片段并验证其边界。
+
+
+第六课运行：
+
+```powershell
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/06-lambda-captures.cpp -o build/06-lambda-captures.exe
+./build/06-lambda-captures.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/06-comparator-check.cpp -o build/06-comparator-check.exe
+./build/06-comparator-check.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/06-ranking.cpp -o build/06-ranking.exe
+"5 60`nBob 90`nAlice 90`nBob 90`nZoe 59`nCarl 100" | ./build/06-ranking.exe
+python stl/tests/check_lesson_06.py
+```
+
+三个程序使用同目录的 06-ranking-model.hpp 共享记录和规则。比较器检查只检测反例，不对错误比较器执行 sort。
