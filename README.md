@@ -31,7 +31,11 @@
 - [第六课练习参考答案](stl/solutions/06-lambda-sort.md)
 - [第六课自动检查](stl/tests/check_lesson_06.py)
 
-目前已完成规划和前六课，其余课程尚未撰写。主线为 C++17，C++20 扩展单独标注。
+- [第七章 查找 计数 变换与数值算法](stl/lessons/07-search-transform-numeric.md)
+- [第七章练习参考答案](stl/solutions/07-algorithms.md)
+- [第七章自动检查](stl/tests/check_lesson_07.py)
+
+目前已完成规划和前七章，其余课程尚未撰写。主线为 C++17，C++20 扩展单独标注。
 
 ## 运行示例
 
@@ -112,3 +116,18 @@ python stl/tests/check_lesson_06.py
 ```
 
 三个程序使用同目录的 06-ranking-model.hpp 共享记录和规则。比较器检查只检测反例，不对错误比较器执行 sort。
+
+
+第七章运行：
+
+```powershell
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/07-search-count.cpp -o build/07-search-count.exe
+./build/07-search-count.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/07-transform-numeric.cpp -o build/07-transform-numeric.exe
+./build/07-transform-numeric.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/07-data-pipeline.cpp -o build/07-data-pipeline.exe
+"5 2`n-3 2 5 2 0" | ./build/07-data-pipeline.exe
+python stl/tests/check_lesson_07.py
+```
+
+数值示例明确限定输入范围；累计和、乘法和 partial_sum 的输入类型分别检查，避免只扩大输出类型而遗漏中间运算。
