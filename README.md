@@ -35,7 +35,11 @@
 - [第七章练习参考答案](stl/solutions/07-algorithms.md)
 - [第七章自动检查](stl/tests/check_lesson_07.py)
 
-目前已完成规划和前七章，其余课程尚未撰写。主线为 C++17，C++20 扩展单独标注。
+- [第八章 排序 去重 条件删除与重排](stl/lessons/08-sort-remove-reorder.md)
+- [第八章练习参考答案](stl/solutions/08-reordering.md)
+- [第八章自动检查](stl/tests/check_lesson_08.py)
+
+目前已完成规划和前八章，其余课程尚未撰写。主线为 C++17，C++20 扩展单独标注。
 
 ## 运行示例
 
@@ -131,3 +135,18 @@ python stl/tests/check_lesson_07.py
 ```
 
 数值示例明确限定输入范围；累计和、乘法和 partial_sum 的输入类型分别检查，避免只扩大输出类型而遗漏中间运算。
+
+
+第八章运行：
+
+```powershell
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/08-compaction.cpp -o build/08-compaction.exe
+./build/08-compaction.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/08-reordering.cpp -o build/08-reordering.exe
+./build/08-reordering.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/08-clean-rotate.cpp -o build/08-clean-rotate.exe
+"8 2`n3 -1 3 2 0 -2 2 5" | ./build/08-clean-rotate.exe
+python stl/tests/check_lesson_08.py
+```
+
+先区分算法返回的逻辑终点与容器实际 end，再调用 erase。普通 partition 只校验分组性质；不依赖其组内顺序。
