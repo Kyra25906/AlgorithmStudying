@@ -178,3 +178,17 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/11-adapters.cpp -o build/11
 g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/12-ordered-sets.cpp -o build/12-ordered-sets.exe
 ./build/12-ordered-sets.exe
 ```
+
+
+## 第 13～20 章
+
+- [第13章 map 与 multimap](stl/lessons/13-maps.md)
+- [第14章 unordered 容器与自定义哈希](stl/lessons/14-hash.md)
+- [第15章 归并、集合、排列与堆](stl/lessons/15-advanced-algorithms.md)
+- [第16章 移动、emplace 与生命周期](stl/lessons/16-lifetime.md)
+- [第17章 节点提取、合并与 pmr](stl/lessons/17-nodes-pmr.md)
+- [第18章 C++20 contains、erase_if 与 ranges](stl/lessons/18-cpp20-ranges.md)
+- [第19章 综合一：单词排行与动态成绩](stl/lessons/19-project-records.md)
+- [第20章 综合二：BFS 与任务调度](stl/lessons/20-project-bfs-scheduler.md)
+
+各章示例位于 `stl/examples/`，第 18 章使用 C++20，其余使用 C++17。
