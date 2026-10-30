@@ -165,3 +165,16 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/09-boundaries-selection.cpp
 g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/10-sequence-containers.cpp -o build/10-sequence-containers.exe
 ./build/10-sequence-containers.exe
 ```
+
+
+## 第十一、十二章
+
+- [第十一章 栈、队列与优先队列](stl/lessons/11-adapters.md)
+- [第十二章 set 与 multiset：动态有序集合](stl/lessons/12-ordered-sets.md)
+
+```powershell
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/11-adapters.cpp -o build/11-adapters.exe
+./build/11-adapters.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/12-ordered-sets.cpp -o build/12-ordered-sets.exe
+./build/12-ordered-sets.exe
+```
