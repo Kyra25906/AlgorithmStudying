@@ -150,3 +150,18 @@ python stl/tests/check_lesson_08.py
 ```
 
 先区分算法返回的逻辑终点与容器实际 end，再调用 erase。普通 partition 只校验分组性质；不依赖其组内顺序。
+
+
+## 第九、十章
+
+- [第九章 二分边界与前 K 项选择](stl/lessons/09-boundaries-selection.md)
+- [第十章 顺序容器与节点转移](stl/lessons/10-sequence-containers.md)
+
+编译运行：
+
+```powershell
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/09-boundaries-selection.cpp -o build/09-boundaries-selection.exe
+./build/09-boundaries-selection.exe
+g++ -std=c++17 -Wall -Wextra -Wpedantic stl/examples/10-sequence-containers.cpp -o build/10-sequence-containers.exe
+./build/10-sequence-containers.exe
+```
